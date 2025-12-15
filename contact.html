@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#111827">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ConvertFacture — Contact</title>
+    <meta name="description" content="Contactez ConvertFacture : une question, une demande de démo, un retour sur la bêta." />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- Top bar -->
+    <header class="topbar">
+        <div class="container topbar__inner">
+            <a class="brand" href="index.html" aria-label="ConvertFacture">
+                <span class="brand__mark">C</span>
+                <span class="brand__name">ConvertFacture</span>
+            </a>
+
+            <nav class="nav nav--pill">
+                <a class="nav__link" href="index.html#tools">Outils</a>
+                <a class="nav__link" href="pricing.html">Tarifs</a>
+                <a class="nav__link nav__link--active" href="contact.html">Contact</a>
+            </nav>
+
+            <div class="actions">
+                <a class="btn btn--primary btn--cta" href="index.html#beta">Nous contacter</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero hero--tight">
+            <div class="container hero__inner">
+                <h1>Nous contacter</h1>
+                <p>
+                    Une question, une demande de démo, ou un retour sur la bêta ?
+                    Écris-nous ici : on répond rapidement.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact content -->
+        <section class="contact">
+            <div class="container contact__grid">
+
+                <!-- Form card -->
+                <div class="contact-card">
+                    <h2>Envoyer un message</h2>
+                    <p class="muted">Tu peux aussi mettre un lien Tally ici plus tard. Pour l’instant, c’est un formulaire simple.</p>
+
+                    <form class="contact-form" action="#" method="post">
+                        <div class="field">
+                            <label for="name">Nom</label>
+                            <input id="name" class="input" type="text" placeholder="Ton nom" required />
+                        </div>
+
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input id="email" class="input" type="email" placeholder="ton@email.com" required />
+                        </div>
+
+                        <div class="field">
+                            <label for="topic">Sujet</label>
+                            <select id="topic" class="input" required>
+                                <option value="" disabled selected>Choisir…</option>
+                                <option>Question générale</option>
+                                <option>Tarifs</option>
+                                <option>Bêta / accès</option>
+                                <option>Bug / problème</option>
+                                <option>Partenariat</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="input textarea" rows="6" placeholder="Explique en 2 phrases ce dont tu as besoin…" required></textarea>
+                        </div>
+
+                        <button class="btn btn--primary btn--cta" type="submit">Envoyer →</button>
+
+                        <p class="fineprint">
+                            En envoyant ce message, tu acceptes d’être recontacté au sujet de ConvertFacture.
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Info card -->
+                <div class="contact-card contact-card--info">
+                    <h2>Infos rapides</h2>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <div class="info-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="1.7" />
+                                    <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="info-title">Email</div>
+                                <div class="info-text"><a class="link" href="mailto:contact@convertfacture.fr">contact@convertfacture.fr</a></div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon info-icon--blue" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" stroke="currentColor" stroke-width="1.7" />
+                                    <path d="M12 8v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8 3h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="info-title">Délai</div>
+                                <div class="info-text">Réponse sous 24–48h</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon info-icon--green" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="info-title">Bêta</div>
+                                <div class="info-text">Tu peux aussi <a class="link" href="index.html#beta">rejoindre la bêta</a> directement.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note" style="margin-top:14px;">
+                        <strong>Tip :</strong> pour valider ton besoin, indique ton volume de factures/mois + ton outil actuel (Excel, PDF, logiciel…).
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <span>© <span id="year"></span> ConvertFacture</span>
+            <span class="footer__sep">·</span>
+            <a class="link" href="#">Confidentialité</a>
+            <span class="footer__sep">·</span>
+            <a class="link" href="pricing.html">Tarifs</a>
+        </div>
+
+        <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,252 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#111827">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ConvertFacture — Créer une facture Factur-X</title>
+    <meta name="description" content="Créez une facture Factur-X en quelques minutes. PoC : laissez votre email pour être prévenu." />
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <!-- Top bar -->
+    <header class="topbar">
+        <div class="container topbar__inner">
+            <a class="brand" href="../index.html" aria-label="ConvertFacture">
+                <span class="brand__mark">C</span>
+                <span class="brand__name">ConvertFacture</span>
+            </a>
+
+            <nav class="nav nav--pill">
+                <a class="nav__link nav__link--active" href="../index.html#tools">Outils</a>
+                <a class="nav__link" href="../pricing.html">Tarifs</a>
+                <a class="nav__link" href="../contact.html">Contact</a>
+            </nav>
+
+            <div class="actions">
+                <a class="btn btn--primary btn--cta" href="../index.html#beta">Nous contacter</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero hero--tight">
+            <div class="container hero__inner">
+                <h1>Créer une facture Factur-X</h1>
+                <p>
+                    Créez une facture propre (client, lignes, TVA, totaux) puis exportez en <strong>Factur-X</strong>.
+                    <br />
+                    <strong>PoC :</strong> on valide la demande — cliquez pour être prévenu dès que c’est prêt.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main card -->
+        <section class="tool">
+            <div class="container">
+                <div class="tool-card tool-card--center">
+                    <h2>Commencer une facture</h2>
+                    <p class="muted">
+                        Le créateur est en développement. Testez l’aperçu ci-dessous puis cliquez pour être prévenu.
+                    </p>
+
+                    <!-- Fake mini editor (opens modal) -->
+                    <div class="dropzone dropzone--big" id="dropzone" role="button" tabindex="0" aria-label="Créer une facture (bêta)">
+                        <div class="dropzone__icon dropzone__icon--big" aria-hidden="true">
+                            <!-- Pencil icon -->
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M12 20h9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4 11.5-11.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+
+                        <div class="dropzone__text" style="width:100%; max-width: 760px;">
+                            <div class="dropzone__title">Aperçu du créateur</div>
+                            <div class="dropzone__sub">Client • Lignes • TVA • Totaux</div>
+
+                            <div class="fake-form">
+                                <div class="fake-row">
+                                    <input class="input fake-input" type="text" placeholder="Nom du client (ex: ACME)" aria-label="Nom du client" />
+                                    <input class="input fake-input" type="text" placeholder="SIRET client (optionnel)" aria-label="SIRET client" />
+                                </div>
+
+                                <div class="fake-row">
+                                    <input class="input fake-input" type="text" placeholder="Prestation / Produit (ex: Conseil)" aria-label="Libellé ligne" />
+                                    <input class="input fake-input" type="number" placeholder="Qté" aria-label="Quantité" />
+                                    <input class="input fake-input" type="number" placeholder="Prix HT" aria-label="Prix HT" />
+                                </div>
+
+                                <div class="fake-row">
+                                    <select class="input fake-input" aria-label="TVA">
+                                        <option selected>TVA 20%</option>
+                                        <option>TVA 10%</option>
+                                        <option>TVA 5.5%</option>
+                                        <option>TVA 0%</option>
+                                    </select>
+                                    <input class="input fake-input" type="text" placeholder="Total (calcul auto)" aria-label="Total" />
+                                </div>
+
+                                <div class="dropzone__hint" style="margin-top:10px;">
+                                    PoC : rien n’est généré — clique sur “Générer Factur-X” pour demander l’accès.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-actions tool-actions--center">
+                        <button class="btn btn--primary btn--cta" type="button" id="openModalBtn">
+                            Générer Factur-X (bêta) →
+                        </button>
+                    </div>
+
+                    <div class="mini-benefits">
+                        <div class="mini-benefit">✓ Facture propre</div>
+                        <div class="mini-benefit">✓ Totaux & TVA cohérents</div>
+                        <div class="mini-benefit">✓ Export Factur-X</div>
+                    </div>
+
+                    <p class="fineprint" style="margin-top:12px;">
+                        Objectif : savoir si des gens sont prêts à payer. Merci 🙏
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal (PoC) -->
+        <div class="modal" id="betaModal" aria-hidden="true">
+            <div class="modal__backdrop" data-close></div>
+
+            <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+                <button class="modal__close" type="button" aria-label="Fermer" data-close>×</button>
+
+                <h2 id="modalTitle">Créateur en développement</h2>
+                <p class="muted">
+                    On lance bientôt la bêta “Créer une facture Factur-X”. Laisse ton email et on te prévient dès que c’est prêt.
+                </p>
+
+                <form class="modal__form" action="#" method="post">
+                    <input type="hidden" name="tool" value="create-facturx" />
+
+                    <input class="input" name="email" type="email" placeholder="Ton email" required />
+
+                    <select class="input" name="volume" required>
+                        <option value="" disabled selected>Factures B2B / mois</option>
+                        <option>0–10</option>
+                        <option>10–50</option>
+                        <option>50+</option>
+                    </select>
+
+                    <select class="input" name="use_case" required>
+                        <option value="" disabled selected>Ton cas principal</option>
+                        <option>Je crée mes factures sur Word / PDF</option>
+                        <option>Je fais mes factures sur Excel</option>
+                        <option>J’ai déjà un logiciel</option>
+                        <option>Autre</option>
+                    </select>
+
+                    <select class="input" name="price" required>
+                        <option value="" disabled selected>Prix acceptable</option>
+                        <option>9€ / mois</option>
+                        <option>19€ / mois</option>
+                        <option>49€ / mois</option>
+                        <option>Je préfère payer à l’usage</option>
+                        <option>Je ne paierai pas</option>
+                    </select>
+
+                    <button class="btn btn--primary btn--cta" type="submit">Me prévenir →</button>
+                    <p class="fineprint">Pas de spam. Juste un mail quand la bêta est prête.</p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <span>© <span id="year"></span> ConvertFacture</span>
+            <span class="footer__sep">·</span>
+            <a class="link" href="../pricing.html">Tarifs</a>
+            <span class="footer__sep">·</span>
+            <a class="link" href="../contact.html">Contact</a>
+        </div>
+
+        <script>
+            // Footer year
+            const yearEl = document.getElementById("year");
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            // Modal open/close
+            const modal = document.getElementById("betaModal");
+            const dropzone = document.getElementById("dropzone");
+            const openBtn = document.getElementById("openModalBtn");
+            const fakeInputs = document.querySelectorAll(".fake-input");
+            const form = modal ? modal.querySelector("form.modal__form") : null;
+
+            function openModal() {
+                if (!modal) return;
+                modal.classList.add("modal--open");
+                modal.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+                const emailInput = modal.querySelector("input[type='email']");
+                if (emailInput) emailInput.focus();
+            }
+
+            function closeModal() {
+                if (!modal) return;
+                modal.classList.remove("modal--open");
+                modal.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+            }
+
+            // Open on big area click / keypress
+            if (dropzone) {
+                dropzone.addEventListener("click", openModal);
+                dropzone.addEventListener("keypress", (e) => {
+                    if (e.key === "Enter" || e.key === " ") openModal();
+                });
+            }
+
+            // Open when user focuses any fake input (fake door)
+            fakeInputs.forEach((el) => {
+                el.addEventListener("focus", openModal, { once: true });
+            });
+
+            // Open on button click
+            if (openBtn) openBtn.addEventListener("click", openModal);
+
+            // Close on backdrop / close button
+            if (modal) {
+                modal.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", closeModal));
+            }
+
+            // Close on Escape
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeModal();
+            });
+
+            // PoC submit: show thank-you message instead of sending
+            if (form) {
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault();
+
+                    form.innerHTML = `
+                    <h3 style="margin:6px 0 0;">Merci 🙌</h3>
+                    <p class="muted" style="margin-top:8px;">
+                      On te contactera dès que l’accès à ce plan est prêt.
+                    </p>
+                    <button class="btn btn--primary btn--cta" type="button" id="closeAfterThanks">Fermer</button>
+                  `;
+
+                    const closeBtn = document.getElementById("closeAfterThanks");
+                    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+                });
+            }
+        </script>
+    </footer>
+</body>
+</html>

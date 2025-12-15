@@ -1,0 +1,217 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#111827">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ConvertFacture — PDF → Factur-X</title>
+    <meta name="description" content="Convertissez un PDF en Factur-X. PoC : laissez votre email et le prix acceptable pour être prévenu." />
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <!-- Top bar -->
+    <header class="topbar">
+        <div class="container topbar__inner">
+            <a class="brand" href="../index.html" aria-label="ConvertFacture">
+                <span class="brand__mark">C</span>
+                <span class="brand__name">ConvertFacture</span>
+            </a>
+
+            <nav class="nav nav--pill">
+                <a class="nav__link nav__link--active" href="../index.html#tools">Outils</a>
+                <a class="nav__link" href="../pricing.html">Tarifs</a>
+                <a class="nav__link" href="../contact.html">Contact</a>
+            </nav>
+
+            <div class="actions">
+                <a class="btn btn--primary btn--cta" href="../index.html#beta">Nous contacter</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero hero--tight">
+            <div class="container hero__inner">
+                <h1>PDF → Factur-X</h1>
+                <p>
+                    Convertissez une facture PDF en <strong>Factur-X</strong>.
+                    <br />
+                    <strong>PoC :</strong> on valide la demande — cliquez pour être prévenu dès que c’est prêt.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main card -->
+        <section class="tool">
+            <div class="container">
+                <div class="tool-card tool-card--center">
+                    <h2>Déposez votre PDF</h2>
+                    <p class="muted">Le convertisseur est en développement. Cliquez sur la zone ci-dessous pour être prévenu.</p>
+
+                    <!-- Big dropzone (opens modal) -->
+                    <div class="dropzone dropzone--big" id="dropzone" role="button" tabindex="0" aria-label="Déposer un PDF (bêta)">
+                        <div class="dropzone__icon dropzone__icon--big" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" />
+                                <path d="M14 3v4a1 1 0 0 0 1 1h4" stroke="currentColor" stroke-width="1.7" />
+                                <path d="M12 11v7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                <path d="m9 14 3-3 3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+
+                        <div class="dropzone__text">
+                            <div class="dropzone__title">Déposez votre PDF ici</div>
+                            <div class="dropzone__sub">ou cliquez pour sélectionner un fichier</div>
+                            <div class="dropzone__hint">PoC : aucun fichier n’est envoyé — on mesure juste l’intérêt.</div>
+                        </div>
+
+                        <!-- input caché (utile plus tard) -->
+                        <input class="file" type="file" accept="application/pdf" />
+                    </div>
+
+                    <div class="tool-actions tool-actions--center">
+                        <button class="btn btn--primary btn--cta" type="button" id="openModalBtn">
+                            Me prévenir quand c’est prêt →
+                        </button>
+                    </div>
+
+                    <div class="mini-benefits">
+                        <div class="mini-benefit">✓ Conversion simple</div>
+                        <div class="mini-benefit">✓ Vérification des erreurs</div>
+                        <div class="mini-benefit">✓ Format Factur-X</div>
+                    </div>
+
+                    <p class="fineprint" style="margin-top:12px;">
+                        Objectif : savoir si des gens sont prêts à payer. Merci 🙏
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal (PoC) -->
+        <div class="modal" id="betaModal" aria-hidden="true">
+            <div class="modal__backdrop" data-close></div>
+
+            <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+                <button class="modal__close" type="button" aria-label="Fermer" data-close>×</button>
+
+                <h2 id="modalTitle">Convertisseur en développement</h2>
+                <p class="muted">
+                    On lance bientôt la bêta “PDF → Factur-X”. Laisse ton email et on te prévient dès que c’est prêt.
+                </p>
+
+                <form class="modal__form" action="#" method="post">
+                    <input type="hidden" name="tool" value="pdf-to-facturx" />
+
+                    <input class="input" name="email" type="email" placeholder="Ton email" required />
+
+                    <select class="input" name="volume" required>
+                        <option value="" disabled selected>Factures B2B / mois</option>
+                        <option>0–10</option>
+                        <option>10–50</option>
+                        <option>50+</option>
+                    </select>
+
+                    <select class="input" name="price" required>
+                        <option value="" disabled selected>Prix acceptable</option>
+                        <option>9€ / mois</option>
+                        <option>19€ / mois</option>
+                        <option>49€ / mois</option>
+                        <option>Je préfère payer à l’usage</option>
+                        <option>Je ne paierai pas</option>
+                    </select>
+
+                    <button class="btn btn--primary btn--cta" type="submit">Me prévenir →</button>
+                    <p class="fineprint">Pas de spam. Juste un mail quand la bêta est prête.</p>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <span>© <span id="year"></span> ConvertFacture</span>
+            <span class="footer__sep">·</span>
+            <a class="link" href="../pricing.html">Tarifs</a>
+            <span class="footer__sep">·</span>
+            <a class="link" href="../contact.html">Contact</a>
+        </div>
+
+        <script>
+            // Footer year
+            const yearEl = document.getElementById("year");
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            // Modal open/close
+            const modal = document.getElementById("betaModal");
+            const dropzone = document.getElementById("dropzone");
+            const openBtn = document.getElementById("openModalBtn");
+            const form = modal ? modal.querySelector("form.modal__form") : null;
+
+            function openModal() {
+                if (!modal) return;
+                modal.classList.add("modal--open");
+                modal.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+
+                const emailInput = modal.querySelector("input[type='email']");
+                if (emailInput) emailInput.focus();
+            }
+
+            function closeModal() {
+                if (!modal) return;
+                modal.classList.remove("modal--open");
+                modal.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+            }
+
+            // Open on dropzone click / keypress
+            if (dropzone) {
+                dropzone.addEventListener("click", openModal);
+                dropzone.addEventListener("keypress", (e) => {
+                    if (e.key === "Enter" || e.key === " ") openModal();
+                });
+            }
+
+            // Open on button click
+            if (openBtn) openBtn.addEventListener("click", openModal);
+
+            // Close on backdrop / close button
+            if (modal) {
+                modal.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", closeModal));
+            }
+
+            // Close on Escape
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeModal();
+            });
+
+            // PoC submit: show thank-you message instead of sending
+            if (form) {
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault();
+
+                    form.innerHTML = `
+                <h3 style="margin:6px 0 0;">Merci 🙌</h3>
+                <p class="muted" style="margin-top:8px;">
+                  On te contactera dès que l’accès à ce plan est prêt.
+                </p>
+                <button class="btn btn--primary btn--cta" type="button" id="closeAfterThanks">Fermer</button>
+              `;
+
+                    const closeBtn = document.getElementById("closeAfterThanks");
+                    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+                });
+            }
+        </script>
+
+    </footer>
+</body>
+</html>
