@@ -1,0 +1,353 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G-V4JG3WWYP5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-G-V4JG3WWYP5');
+    </script>
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#111827">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ConvertFacture — Comprendre un rejet</title>
+    <meta name="description" content="Déposez un fichier de rejet (XML/TXT) ou collez le message. On explique quoi corriger. PoC : laissez votre email." />
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+    <!-- Top bar -->
+    <header class="topbar">
+        <div class="container topbar__inner">
+            <a class="brand" href="../index.html" aria-label="ConvertFacture">
+                <span class="brand__mark">C</span>
+                <span class="brand__name">ConvertFacture</span>
+            </a>
+
+            <nav class="nav nav--pill">
+                <a class="nav__link nav__link--active" href="../index.html#tools">Outils</a>
+                <a class="nav__link" href="../pricing.html">Tarifs</a>
+                <a class="nav__link" href="../contact.html">Contact</a>
+            </nav>
+
+            <div class="actions">
+                <a class="btn btn--primary btn--cta" href="../contact.html">Nous contacter</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero hero--tight">
+            <div class="container hero__inner">
+                <h1>Comprendre un rejet</h1>
+                <p>
+                    Déposez un fichier de rejet (<strong>.txt / .xml</strong>) ou collez le message :
+                    on vous explique <strong>quoi corriger</strong>, simplement.
+                    <br />
+                    <strong>PoC :</strong> vous cliquez “Analyser” → on vous propose d’être prévenu quand c’est prêt.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main card -->
+        <section class="tool">
+            <div class="container">
+                <div class="tool-card tool-card--center">
+                    <h2>Déposez / collez votre rejet</h2>
+                    <p class="muted">
+                        Glissez-déposez un fichier de rejet ou collez le message. (PoC : rien n’est envoyé.)
+                    </p>
+
+                    <!-- REAL dropzone + paste box -->
+                    <div class="dropzone dropzone--big dropzone--rejection" id="dropzone" tabindex="0" aria-label="Zone de dépôt rejet">
+                        <div class="dzhead">
+                            <div class="dropzone__icon dropzone__icon--big" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 9v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                    <path d="M12 17h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                                    <path d="M10.3 4.6a2 2 0 0 1 3.4 0l8 14a2 2 0 0 1-1.7 3H4a2 2 0 0 1-1.7-3l8-14Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+
+                            <div class="dzhead__text">
+                                <div class="dropzone__title">Zone de dépôt</div>
+                                <div class="dropzone__sub">Déposez un fichier <strong>.txt / .log / .xml</strong> ou collez le message ci-dessous</div>
+                                <div class="dropzone__hint">PoC : rien n’est envoyé — on mesure l’intérêt.</div>
+                            </div>
+                        </div>
+
+                        <textarea class="input textarea reject-box"
+                                  id="rejectText"
+                                  rows="9"
+                                  placeholder="Collez ici le message de rejet…&#10;&#10;Ex :&#10;• Champ SIRET manquant&#10;• Invalid BT-xxx&#10;• Total TTC incohérent…"
+                                  aria-label="Message de rejet"></textarea>
+
+                        <div class="dzfoot">
+                            <div class="dzfoot__left">
+                                <button class="btn" type="button" id="pickFileBtn">Choisir un fichier</button>
+                                <span class="dzsmall">ou glissez-déposez ici</span>
+                            </div>
+
+                            <button class="btn btn--primary btn--cta" type="button" id="analyzeBtn">
+                                Analyser (bêta) →
+                            </button>
+                        </div>
+
+                        <input class="file"
+                               id="fileInput"
+                               type="file"
+                               accept=".txt,.log,.xml,text/plain,application/xml,text/xml" />
+                    </div>
+
+                    <div class="mini-benefits">
+                        <div class="mini-benefit">✓ Explication en français</div>
+                        <div class="mini-benefit">✓ “Quoi corriger” + exemple</div>
+                        <div class="mini-benefit">✓ Gain de temps</div>
+                    </div>
+
+                    <p class="fineprint" style="margin-top:12px;">
+                        Objectif : savoir si des gens sont prêts à payer. Merci 🙏
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal (PoC) -->
+        <div class="modal" id="betaModal" aria-hidden="true">
+            <div class="modal__backdrop" data-close></div>
+
+            <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+                <button class="modal__close" type="button" aria-label="Fermer" data-close>×</button>
+
+                <h2 id="modalTitle">Analyse en développement</h2>
+                <p class="muted">
+                    On lance bientôt la bêta “Comprendre un rejet”. Laisse ton email et on te prévient dès que c’est prêt.
+                </p>
+
+                <!-- ✅ Formspree -->
+                <form class="modal__form" id="betaForm" action="https://formspree.io/f/xjkndglk" method="POST">
+                    <!-- context -->
+                    <input type="hidden" name="tool" value="reject-help" />
+                    <input type="hidden" name="page" value="reject-help" />
+                    <input type="hidden" name="_subject" value="ConvertFacture — Demande bêta (Comprendre un rejet)" />
+
+                    <!-- honeypot anti-spam -->
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+                    <div id="formStep">
+                        <input class="input" name="email" type="email" placeholder="Ton email" required />
+
+                        <select class="input" name="volume" required>
+                            <option value="" disabled selected>Factures B2B / mois</option>
+                            <option>0–10</option>
+                            <option>10–50</option>
+                            <option>50+</option>
+                        </select>
+
+                        <select class="input" name="source" required>
+                            <option value="" disabled selected>Tu reçois des rejets depuis…</option>
+                            <option>Une plateforme / portail</option>
+                            <option>Un logiciel de facturation</option>
+                            <option>Un client / partenaire</option>
+                            <option>Je ne sais pas</option>
+                        </select>
+
+                        <select class="input" name="price" required>
+                            <option value="" disabled selected>Prix acceptable</option>
+                            <option>9€ / mois</option>
+                            <option>19€ / mois</option>
+                            <option>49€ / mois</option>
+                            <option>Je préfère payer à l’usage</option>
+                            <option>Je ne paierai pas</option>
+                        </select>
+
+                        <button class="btn btn--primary btn--cta" type="submit" id="submitBtn">Me prévenir →</button>
+                        <p class="fineprint">Pas de spam. Juste un mail quand la bêta est prête.</p>
+
+                        <p class="fineprint" id="formError" style="display:none; color: rgba(239,68,68,0.95);">
+                            Oups — impossible d’envoyer pour l’instant. Réessaie dans quelques secondes.
+                        </p>
+                    </div>
+
+                    <div id="thanksStep" style="display:none;">
+                        <h3 style="margin:6px 0 0;">Merci 🙌</h3>
+                        <p class="muted" style="margin-top:8px;">
+                            On te contactera dès que l’accès à ce plan est prêt.
+                        </p>
+                        <button class="btn btn--primary btn--cta" type="button" id="closeAfterThanks">Fermer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <span>© <span id="year"></span> ConvertFacture</span>
+            <span class="footer__sep">·</span>
+            <a class="link" href="../pricing.html">Tarifs</a>
+            <span class="footer__sep">·</span>
+            <a class="link" href="../contact.html">Contact</a>
+        </div>
+
+        <script>
+            // Footer year
+            const yearEl = document.getElementById("year");
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            // Elements
+            const modal = document.getElementById("betaModal");
+            const fileInput = document.getElementById("fileInput");
+            const pickFileBtn = document.getElementById("pickFileBtn");
+            const rejectText = document.getElementById("rejectText");
+            const analyzeBtn = document.getElementById("analyzeBtn");
+            const dropzone = document.getElementById("dropzone");
+
+            const form = document.getElementById("betaForm");
+            const formStep = document.getElementById("formStep");
+            const thanksStep = document.getElementById("thanksStep");
+            const closeAfterThanks = document.getElementById("closeAfterThanks");
+            const submitBtn = document.getElementById("submitBtn");
+            const formError = document.getElementById("formError");
+
+            function resetModalUI() {
+                if (formStep) formStep.style.display = "";
+                if (thanksStep) thanksStep.style.display = "none";
+                if (formError) formError.style.display = "none";
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Me prévenir →";
+                }
+            }
+
+            function openModal() {
+                if (!modal) return;
+                resetModalUI();
+                modal.classList.add("modal--open");
+                modal.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+
+                const emailInput = modal.querySelector("input[type='email']");
+                if (emailInput) emailInput.focus();
+            }
+
+            function closeModal() {
+                if (!modal) return;
+                modal.classList.remove("modal--open");
+                modal.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+            }
+
+            // Open modal only when user tries to analyze
+            if (analyzeBtn) analyzeBtn.addEventListener("click", openModal);
+
+            // Close modal
+            if (modal) {
+                modal.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", closeModal));
+            }
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeModal();
+            });
+            if (closeAfterThanks) closeAfterThanks.addEventListener("click", closeModal);
+
+            // Pick file button
+            if (pickFileBtn && fileInput) {
+                pickFileBtn.addEventListener("click", () => fileInput.click());
+            }
+
+            // Read file content into textarea (client-side)
+            function loadFile(file) {
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const text = String(reader.result || "");
+                    if (rejectText) rejectText.value = text.slice(0, 200000);
+                };
+                reader.readAsText(file);
+            }
+
+            if (fileInput) {
+                fileInput.addEventListener("change", (e) => {
+                    const file = e.target.files && e.target.files[0];
+                    loadFile(file);
+                });
+            }
+
+            // Drag & drop (for UX only)
+            if (dropzone) {
+                const prevent = (e) => { e.preventDefault(); e.stopPropagation(); };
+
+                ["dragenter", "dragover"].forEach((evt) => {
+                    dropzone.addEventListener(evt, (e) => {
+                        prevent(e);
+                        dropzone.classList.add("dropzone--dragover");
+                    });
+                });
+
+                ["dragleave", "drop"].forEach((evt) => {
+                    dropzone.addEventListener(evt, (e) => {
+                        prevent(e);
+                        dropzone.classList.remove("dropzone--dragover");
+                    });
+                });
+
+                dropzone.addEventListener("drop", (e) => {
+                    const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+                    loadFile(file);
+                });
+            }
+
+            // ✅ AJAX submit -> Formspree
+            if (form) {
+                form.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    if (formError) formError.style.display = "none";
+
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = "Envoi…";
+                    }
+
+                    try {
+                        const res = await fetch(form.action, {
+                            method: "POST",
+                            body: new FormData(form),
+                            headers: { "Accept": "application/json" }
+                        });
+
+                        if (res.ok) {
+                            if (window.gtag) gtag("event", "beta_signup", { tool: "reject-help" });
+                            if (formStep) formStep.style.display = "none";
+                            if (thanksStep) thanksStep.style.display = "";
+
+                            // reset champs visibles
+                            form.reset();
+                        } else {
+                            if (formError) formError.style.display = "";
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = "Me prévenir →";
+                            }
+                        }
+                    } catch (err) {
+                        if (formError) formError.style.display = "";
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = "Me prévenir →";
+                        }
+                    }
+                });
+            }
+        </script>
+    </footer>
+</body>
+</html>

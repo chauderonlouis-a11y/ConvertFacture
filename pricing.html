@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="fr">
+<head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G-V4JG3WWYP5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-G-V4JG3WWYP5');
+    </script>
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#111827">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ConvertFacture — Tarifs</title>
+    <meta name="description" content="Tarifs ConvertFacture : choisissez un plan selon votre volume de factures." />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="container topbar__inner">
+            <a class="brand" href="index.html" aria-label="ConvertFacture">
+                <span class="brand__mark">C</span>
+                <span class="brand__name">ConvertFacture</span>
+            </a>
+
+            <nav class="nav nav--pill">
+                <a class="nav__link" href="index.html#tools">Outils</a>
+                <a class="nav__link nav__link--active" href="pricing.html">Tarifs</a>
+                <a class="nav__link" href="contact.html">Contact</a>
+            </nav>
+
+            <div class="actions">
+                <a class="link link--muted" href="contact.html">Une question ?</a>
+                <a class="btn btn--primary btn--cta" href="#" id="openStartTop">Nous contacter</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero hero--tight">
+            <div class="container hero__inner">
+                <h1>Tarifs simples, transparents</h1>
+                <p>
+                    Choisis un plan selon ton volume de factures.
+                    <br />
+                    Conversion + vérification Factur-X, sans prise de tête.
+                </p>
+
+                <div class="note">
+                    <strong>Inclus :</strong> PDF → Factur-X, Excel → Factur-X, vérification des champs, aide sur les rejets.
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <div class="container">
+                <div class="price-grid">
+
+                    <div class="price-card">
+                        <div class="price-head">
+                            <h3>Starter</h3>
+                            <span class="mini-benefit" style="margin:0;">Solo</span>
+                        </div>
+
+                        <div class="price">9€ <small>/ mois</small></div>
+                        <p class="price-sub">Freelances & micro-entreprises.</p>
+
+                        <ul class="feature-list">
+                            <li>Jusqu’à 20 factures / mois</li>
+                            <li>PDF → Factur-X</li>
+                            <li>Excel → Factur-X</li>
+                            <li>Vérification basique</li>
+                        </ul>
+
+                        <button class="btn btn--primary price-cta js-pick-plan"
+                                data-plan="Starter" data-price="9€ / mois" type="button">
+                            Choisir Starter →
+                        </button>
+                    </div>
+
+                    <div class="price-card price-card--featured">
+                        <div class="price-head">
+                            <h3>Pro</h3>
+                            <span class="mini-benefit" style="margin:0;">Recommandé</span>
+                        </div>
+
+                        <div class="price">19€ <small>/ mois</small></div>
+                        <p class="price-sub">Pour facturation régulière.</p>
+
+                        <ul class="feature-list">
+                            <li>Jusqu’à 100 factures / mois</li>
+                            <li>Tout Starter</li>
+                            <li>Comprendre un rejet</li>
+                            <li>Modèles Factur-X</li>
+                        </ul>
+
+                        <button class="btn btn--primary btn--cta price-cta js-pick-plan"
+                                data-plan="Pro" data-price="19€ / mois" type="button">
+                            Choisir Pro →
+                        </button>
+                    </div>
+
+                    <div class="price-card">
+                        <div class="price-head">
+                            <h3>Business</h3>
+                            <span class="mini-benefit" style="margin:0;">Équipe</span>
+                        </div>
+
+                        <div class="price">49€ <small>/ mois</small></div>
+                        <p class="price-sub">PME / volumes plus élevés.</p>
+
+                        <ul class="feature-list">
+                            <li>Jusqu’à 500 factures / mois</li>
+                            <li>Tout Pro</li>
+                            <li>Support prioritaire</li>
+                            <li>Intégrations (à venir)</li>
+                        </ul>
+
+                        <button class="btn btn--primary price-cta js-pick-plan"
+                                data-plan="Business" data-price="49€ / mois" type="button">
+                            Choisir Business →
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <div class="container">
+                <div class="faq">
+                    <h2 class="faq-title">Questions fréquentes</h2>
+
+                    <div class="faq-item">
+                        <h4>Puis-je changer de plan ?</h4>
+                        <p>Oui, tu pourras ajuster ton plan selon ton volume.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Mes données sont-elles envoyées ?</h4>
+                        <p>Les outils s’exécutent côté navigateur quand c’est possible. (Tu gardes le contrôle.)</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Et l’envoi officiel des factures ?</h4>
+                        <p>La conversion/vérification vient d’abord. L’envoi se fera ensuite via une plateforme agréée.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal" id="betaModal" aria-hidden="true">
+        <div class="modal__backdrop" data-close></div>
+
+        <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="modal__close" type="button" aria-label="Fermer" data-close>×</button>
+
+            <h2 id="modalTitle">Finaliser votre choix</h2>
+            <p class="muted" id="modalSubtitle">Plan sélectionné : —</p>
+
+            <div class="note" style="margin-top:12px;">
+                <strong>Info :</strong> le produit est actuellement en <strong>bêta</strong>.
+                Pour l’instant, <strong>aucun paiement</strong> n’est demandé : on te donne l’accès dès que ton plan est disponible.
+            </div>
+
+            <!-- ✅ Formspree + AJAX -->
+            <form class="modal__form" id="betaForm" action="https://formspree.io/f/xjkndglk" method="POST">
+                <input type="hidden" name="source" value="pricing" />
+                <input type="hidden" name="tool" value="pricing-plan" />
+                <input type="hidden" name="plan" id="chosenPlan" value="" />
+                <input type="hidden" name="display_price" id="chosenPrice" value="" />
+                <input type="hidden" name="_subject" value="ConvertFacture — Nouveau lead (Tarifs)" />
+
+                <!-- honeypot -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+                <div id="betaStep">
+                    <input class="input" name="email" type="email" placeholder="Ton email" required />
+
+                    <select class="input" name="volume" required>
+                        <option value="" disabled selected>Factures B2B / mois</option>
+                        <option>0–10</option>
+                        <option>10–50</option>
+                        <option>50+</option>
+                    </select>
+
+                    <button class="btn btn--primary btn--cta" type="submit" id="betaSubmitBtn">Rejoindre la liste →</button>
+                    <p class="fineprint">Pas de paiement aujourd’hui. On te contacte dès que l’accès est prêt.</p>
+
+                    <p class="fineprint" id="betaError" style="display:none; color: rgba(239,68,68,0.95);">
+                        Oups — impossible d’envoyer pour l’instant. Réessaie dans quelques secondes.
+                    </p>
+                </div>
+
+                <div id="betaThanks" style="display:none;">
+                    <h3 style="margin:6px 0 0;">Merci 🙌</h3>
+                    <p class="muted" style="margin-top:8px;">
+                        On te contactera dès que l’accès à ce plan est prêt.
+                    </p>
+                    <button class="btn btn--primary btn--cta" type="button" id="closeAfterThanks">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <span>© <span id="year"></span> ConvertFacture</span>
+            <span class="footer__sep">·</span>
+            <a class="link" href="#">Confidentialité</a>
+            <span class="footer__sep">·</span>
+            <a class="link" href="contact.html">Contact</a>
+        </div>
+
+        <script>
+            // Footer year
+            const yearEl = document.getElementById("year");
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            // Modal elements
+            const modal = document.getElementById("betaModal");
+            const subtitle = document.getElementById("modalSubtitle");
+            const chosenPlan = document.getElementById("chosenPlan");
+            const chosenPrice = document.getElementById("chosenPrice");
+            const pickBtns = document.querySelectorAll(".js-pick-plan");
+            const openTop = document.getElementById("openStartTop");
+
+            const form = document.getElementById("betaForm");
+            const betaStep = document.getElementById("betaStep");
+            const betaThanks = document.getElementById("betaThanks");
+            const betaSubmitBtn = document.getElementById("betaSubmitBtn");
+            const betaError = document.getElementById("betaError");
+            const closeAfterThanks = document.getElementById("closeAfterThanks");
+
+            function openModal(plan, price) {
+                if (!modal) return;
+
+                // reset UI si déjà merci
+                if (betaError) betaError.style.display = "none";
+                if (betaThanks) betaThanks.style.display = "none";
+                if (betaStep) betaStep.style.display = "";
+                if (betaSubmitBtn) {
+                    betaSubmitBtn.disabled = false;
+                    betaSubmitBtn.textContent = "Rejoindre la liste →";
+                }
+
+                chosenPlan.value = plan || "";
+                chosenPrice.value = price || "";
+
+                if (subtitle) {
+                    subtitle.innerHTML = plan
+                        ? `Plan sélectionné : <strong>${plan}</strong> — <strong>${price || ""}</strong>`
+                        : `Plan sélectionné : —`;
+                }
+
+                modal.classList.add("modal--open");
+                modal.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+
+                const emailInput = modal.querySelector("input[type='email']");
+                if (emailInput) emailInput.focus();
+            }
+
+            function closeModal() {
+                if (!modal) return;
+                modal.classList.remove("modal--open");
+                modal.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+            }
+
+            // Open from top button (no plan selected)
+            if (openTop) {
+                openTop.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    openModal("", "");
+                });
+            }
+
+            // Open from plan buttons
+            pickBtns.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const plan = btn.getAttribute("data-plan") || "";
+                    const price = btn.getAttribute("data-price") || "";
+                    openModal(plan, price);
+                });
+            });
+
+            // Close actions
+            if (modal) {
+                modal.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", closeModal));
+            }
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeModal();
+            });
+
+            // Close after thanks
+            if (closeAfterThanks) closeAfterThanks.addEventListener("click", closeModal);
+
+            // ✅ Submit -> Formspree (AJAX)
+            if (form) {
+                form.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    if (betaError) betaError.style.display = "none";
+
+                    if (betaSubmitBtn) {
+                        betaSubmitBtn.disabled = true;
+                        betaSubmitBtn.textContent = "Envoi…";
+                    }
+
+                    try {
+                        const res = await fetch(form.action, {
+                            method: "POST",
+                            body: new FormData(form),
+                            headers: { "Accept": "application/json" }
+                        });
+
+                        if (res.ok) {
+                            if (window.gtag) gtag("event", "beta_signup", { tool: "pricing" });
+                            if (betaStep) betaStep.style.display = "none";
+                            if (betaThanks) betaThanks.style.display = "";
+                            form.reset();
+                        } else {
+                            if (betaError) betaError.style.display = "";
+                            if (betaSubmitBtn) {
+                                betaSubmitBtn.disabled = false;
+                                betaSubmitBtn.textContent = "Rejoindre la liste →";
+                            }
+                        }
+                    } catch (err) {
+                        if (betaError) betaError.style.display = "";
+                        if (betaSubmitBtn) {
+                            betaSubmitBtn.disabled = false;
+                            betaSubmitBtn.textContent = "Rejoindre la liste →";
+                        }
+                    }
+                });
+            }
+        </script>
+    </footer>
+</body>
+</html>
